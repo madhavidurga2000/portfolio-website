@@ -59,6 +59,7 @@ I’m Madhavi Durga, a passionate and adaptable software developer with hands-on
 </div>
 
 
+
       <div id="python" class="project-content" style="display:none">
         <h3 class="center-heading">Python Web Projects</h3>
         <ul>
@@ -158,12 +159,15 @@ I’m Madhavi Durga, a passionate and adaptable software developer with hands-on
   function showProjectTab(tabId) {
     const allTabs = document.querySelectorAll('.project-content');
     allTabs.forEach(tab => tab.style.display = 'none');
-    document.getElementById(tabId).style.display = 'block';
+    const targetTab = document.getElementById(tabId);
+    if (targetTab) {
+      targetTab.style.display = 'block';
+    }
   }
 
-  // ✅ Attach click events to all project-tab-card divs
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.project-tab-card').forEach(card => {
+    const tabCards = document.querySelectorAll('.project-tab-card');
+    tabCards.forEach(card => {
       card.addEventListener('click', function () {
         const tabId = this.getAttribute('data-tab-id');
         showProjectTab(tabId);
@@ -171,6 +175,7 @@ I’m Madhavi Durga, a passionate and adaptable software developer with hands-on
     });
   });
 </script>
+
 
 </body>
 </html>
