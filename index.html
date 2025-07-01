@@ -43,20 +43,19 @@ I’m Madhavi Durga, a passionate and adaptable software developer with hands-on
     <section id="projects">
       <h2 class="center-heading">💼 Projects</h2>
       <div class="project-tabs">
-  <div class="project-tab-card" click="showProjectTab('python')">
-    <img src="images/python.png" alt="Python Projects" class="project-tab-img" />
-    <button class="tab-btn">🌐 Python Web Projects</button>
-  </div>
+ <div class="project-tab-card" data-tab-id="python">
+  <img src="images/python.png" alt="Python Projects" class="project-tab-img" />
+  <button class="tab-btn">🌐 Python Web Projects</button>
+</div>
 
-  <div class="project-tab-card" click="showProjectTab('java')">
-    <img src="images/java.png" alt="Java Projects" class="project-tab-img" />
-    <button class="tab-btn">☕ Java Projects</button>
-  </div>
+<div class="project-tab-card" data-tab-id="java">
+  <img src="images/java.png" alt="Java Projects" class="project-tab-img" />
+  <button class="tab-btn">☕ Java Projects</button>
+</div>
 
-  <div class="project-tab-card" click="showProjectTab('sql')">
-    <img src="images/sql.jpeg" alt="SQL Projects" class="project-tab-img" />
-    <button class="tab-btn">🗄️ SQL Projects</button>
-  </div>
+<div class="project-tab-card" data-tab-id="sql">
+  <img src="images/sql.jpeg" alt="SQL Projects" class="project-tab-img" />
+  <button class="tab-btn">🗄️ SQL Projects</button>
 </div>
 
 
@@ -155,12 +154,23 @@ I’m Madhavi Durga, a passionate and adaptable software developer with hands-on
     <p>© 2025 Madhavi Durga. All rights reserved.</p>
   </footer>
 
-  <script>
-    function showProjectTab(tabId) {
-      const allTabs = document.querySelectorAll('.project-content');
-      allTabs.forEach(tab => tab.style.display = 'none');
-      document.getElementById(tabId).style.display = 'block';
-    }
-  </script>
+ <script>
+  function showProjectTab(tabId) {
+    const allTabs = document.querySelectorAll('.project-content');
+    allTabs.forEach(tab => tab.style.display = 'none');
+    document.getElementById(tabId).style.display = 'block';
+  }
+
+  // ✅ Attach click events to all project-tab-card divs
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.project-tab-card').forEach(card => {
+      card.addEventListener('click', function () {
+        const tabId = this.getAttribute('data-tab-id');
+        showProjectTab(tabId);
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
